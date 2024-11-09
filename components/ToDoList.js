@@ -2,13 +2,21 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import TodoItem from './ToDoItem';
 
-const TodoList = ({ todos, onDelete, onEdit }) => {
+const TodoList = ({ todos, onDelete, onEdit, onToggleComplete }) => {
    return (
       <FlatList
          data={todos}
-         renderItem={({ item }) => <TodoItem item={item} onDelete={onDelete} onEdit={onEdit} />}
+         renderItem={({ item }) => (
+            <TodoItem
+               item={item}
+               onDelete={onDelete}
+               onEdit={onEdit}
+               onToggleComplete={onToggleComplete}
+            />
+         )}
          keyExtractor={(item) => item.id.toString()}
       />
    );
 };
+
 export default TodoList;
